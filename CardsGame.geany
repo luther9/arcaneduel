@@ -1,0 +1,52 @@
+
+[indentation]
+indent_width=4
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=false
+detect_indent_width=false
+indent_mode=2
+
+[project]
+name=CardsGame
+base_path=/home/admin/Projects/CardsGame/
+description=
+file_patterns=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=9
+FILE_NAME_0=2524;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/main.lua;0;4
+FILE_NAME_1=2790;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/system.lua;0;4
+FILE_NAME_2=1971;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/deck.lua;0;4
+FILE_NAME_3=2739;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/slots.lua;0;4
+FILE_NAME_4=2220;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/companion.lua;0;4
+FILE_NAME_5=3740;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/game.lua;0;4
+FILE_NAME_6=4504;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/anim.lua;0;4
+FILE_NAME_7=2102;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/AI.lua;0;4
+FILE_NAME_8=27021;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/data.lua;0;4
+FILE_NAME_9=0;None;0;16;1;1;0;/home/admin/Projects/CardsGame/Cards.txt;0;4
+FILE_NAME_10=721;Lua;0;16;1;1;0;/home/admin/Projects/CardsGame/conf.lua;0;4
+
+[VTE]
+last_dir=/home/admin
+
+[build-menu]
+EX_00_LB=_Ejecutar
+EX_00_CM=love /home/admin/Projects/CardsGame /home/admin/Projects/CardsGame/deck.txt
+EX_00_WD=
+NF_00_LB=_Compilar
+NF_00_CM=make
+NF_00_WD=
+NF_01_LB=Compilar obje_tivo personalizado
+NF_01_CM=make
+NF_01_WD=
+NF_02_LB=Compilar _objeto
+NF_02_CM=make %e.o
+NF_02_WD=
+NF_03_LB=
+NF_03_CM=
+NF_03_WD=
