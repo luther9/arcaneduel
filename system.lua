@@ -89,7 +89,8 @@ function setScreen()
 	screenWidth = screenWidth*screenScale
 	screenHeight = screenHeight*screenScale
 	
-	love.graphics.setMode(screenWidth, screenHeight, fullscreen, false)
+	love.window.setMode(
+		screenWidth, screenHeight, {fullscreen = fullscreen, vsync = false})
 	
 	love.graphics.setBackgroundColor(black)
 	
