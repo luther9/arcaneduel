@@ -163,7 +163,7 @@ function love.draw()
 	drawWorld()
 end
 
-function love.keypressed(key, unicode)
+function love.keypressed(key)
 	if key == "d" then
 		game.init()
 	elseif key == "f12" then
@@ -173,7 +173,7 @@ function love.keypressed(key, unicode)
 			fullscreen = false
 		end
 		setScreen()
-	elseif key == " " then
+	elseif key == 'space' then
 		game.passTurn()
 	elseif key == "p" then
 		devel = not devel
