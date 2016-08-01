@@ -198,7 +198,7 @@ function love.mousepressed( x, y, button )
 	anim.createMouseParticles(10)
 	
 	if game.status == "match" then
-		if button == "l" then
+		if button == 1 then
 			hoverSlot = slots.isHovering()
 			
 			if hoverSlot > 0 and playerSlots[hoverSlot] > 0 then
