@@ -88,17 +88,19 @@ function anim.createParticles(sX, sY, amount, duration)
 	duration = duration or 1000
 
 	particles = {}
-	
+
 	for i = 1, amount do
+		local speedX, speedY
 		while true do
 			speedX = math.random(-6, 6)
 			speedY = math.random(-6, 6)
-			if speedX ~= 0 or speedY ~= 0 then break end
+			if speedX ~= 0 or speedY ~= 0 then
+				break
+			end
 		end
-		
-		particles[i] = {x = sX, y = sY, 
-						speedX = speedX, speedY = speedY, 
-						dur = duration}
+
+		particles[i] = {
+			x = sX, y = sY, speedX = speedX, speedY = speedY, dur = duration}
 	end
 end
 
