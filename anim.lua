@@ -47,16 +47,7 @@ ADDITIONAL CREDITS:
 
 anim = {}
 
-anim.startX = nil
-anim.startY = nil
-anim.endX = nil
-anim.endY = nil
-anim.speed = nil
-anim.image = nil
-anim.alpha = nil
-anim.minAlpha = nil
-
-particles = {}
+local particles = {}
 
 mouseParticles = {}
 
