@@ -2,6 +2,25 @@ local function healthPercentage(p)
 	return p.hp / game.maxPlayerHealth
 end
 
+local function playerCanDie()
+	for i = 1, 5 do
+		if cards[enemySlots[i]].action[1] == "damage" or
+		cards[enemySlots[i]].action[1] == "damagedot" then
+			if cards[enemySlots[i]].action[2] - player.defense >= player.hp and
+				(enemy.energy >= cards[enemySlots[i]].energy
+				 or enemy.energy + game.energyPerTurn >= cards[enemySlots[i]].energy) then
+					return true
+			end
+		elseif cards[enemySlots[i]].action[1] == "udamage" and
+			(enemy.energy >= cards[enemySlots[i]].energy
+			 or enemy.energy + game.energyPerTurn >= cards[enemySlots[i]].energy) then
+				return true
+		end
+	end
+
+	return false
+end
+
 actionValues = {
 	poison = {
 		function(act, cost)
@@ -563,7 +582,7 @@ actionValues = {
 			end
 
 			if cost > 0 then
-				efficiency = act[2] / cost
+				local efficiency = act[2] / cost
 				result = result + (efficiency < 60 and -1 or 1)
 			else
 				result = result + 1
@@ -638,7 +657,7 @@ actionValues = {
 			end
 
 			if cost > 0 then
-				efficiency = act[3] / cost
+				local efficiency = act[3] / cost
 				result = result + (efficiency < 1 and -1 or 1)
 			else
 				result = result + 1
@@ -648,28 +667,6 @@ actionValues = {
 		end
 	}
 }
-function playerCanDie()
-	canDie = false
-	
-	for i = 1, 5 do
-		if cards[ enemySlots[i] ].action[1] == "damage" or
-		cards[ enemySlots[i] ].action[1] == "damagedot" then
-			if cards[ enemySlots[i] ].action[2] - player.defense >= player.hp and
-				(enemy.energy >= cards[ enemySlots[i] ].energy 
-				 or enemy.energy + game.energyPerTurn >= cards[ enemySlots[i] ].energy) then
-					
-					canDie = true
-			end
-		elseif cards[ enemySlots[i] ].action[1] == "udamage" and
-			(enemy.energy >= cards[ enemySlots[i] ].energy 
-			 or enemy.energy + game.energyPerTurn >= cards[ enemySlots[i] ].energy) then
-				
-				canDie = true
-		end
-	end
-	
-	return canDie
-end
 
 function mustSaveEnergy(cardEnergy)
 	savingValue = 0
