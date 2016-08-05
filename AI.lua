@@ -669,30 +669,27 @@ actionValues = {
 }
 
 function mustSaveEnergy(cardEnergy)
-	savingValue = 0
-	pleaseSaveEnergy = false
-	
-	nextTurnEnergy = enemy.energy - cardEnergy + game.energyPerTurn
-	
+	local savingValue = 0
+
+	local nextTurnEnergy = enemy.energy - cardEnergy + game.energyPerTurn
+
 	for i = 1, 5 do
-		energyCost = cards[ enemySlots[i] ].energy
-		cardValue = cards[ enemySlots[i] ].value
-		cardSchool = cards[ enemySlots[i] ].school
-		
+		local energyCost = cards[enemySlots[i]].energy
+		local cardValue = cards[enemySlots[i]].value
+		local cardSchool = cards[enemySlots[i]].school
+
 		if energyCost >= 4 and cardValue >= 4 and nextTurnEnergy < 4 then
 			savingValue = savingValue + 1
 		end
-		
-		if cardSchool == "elemental" and enemy.elemental >= 1 then savingValue = savingValue + 1 end
-		if cardSchool == "nature" and enemy.nature >= 1 then savingValue = savingValue + 1 end
-		if cardSchool == "mystic" and enemy.mystic >= 1 then savingValue = savingValue + 1 end
-		if cardSchool == "dark" and enemy.dark >= 1 then savingValue = savingValue + 1 end
-		if cardSchool == "void" and enemy.void >= 1 then savingValue = savingValue + 1 end
+
+		if enemy[cardSchool] >= 1 then
+			savingValue = savingValue + 1
+		end
 	end
-	
+
 	if savingValue >= 1 then
-		pleaseSaveEnergy = true
+		return true
 	end
-	
-	return pleaseSaveEnergy
+
+	return false
 end
