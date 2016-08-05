@@ -47,7 +47,7 @@ ADDITIONAL CREDITS:
 
 anim = {}
 
-local particles = {}
+local particles
 
 mouseParticles = {}
 
@@ -86,8 +86,7 @@ end
 function anim.createParticles(sX, sY, amount, duration)
 	amount = amount or 10
 	duration = duration or 1000
-	pColor = pColor or white
-	
+
 	particles = {}
 	
 	for i = 1, amount do
