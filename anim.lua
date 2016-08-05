@@ -61,31 +61,26 @@ function anim.createMovement(image, sX, sY, eX, eY, speed)
 end
 
 function anim.move()
-	doAnimation = true
-	
 	draw(anim.image, anim.startX, anim.startY)
-	
-	if anim.startX ~= anim.endX then
-		if anim.startX < anim.endX then
-			anim.startX = anim.startX + anim.speed
-		elseif anim.startX > anim.endX then
-			anim.startX = anim.startX - anim.speed
+
+	local function move(axis)
+		local start = 'start' .. axis
+		local stop = 'end' .. axis
+		if anim[start] < anim[stop] then
+			anim[start] = anim[start] + anim.speed
+		elseif anim[start] > anim[stop] then
+			anim[start] = anim[start] - anim.speed
 		end
 	end
-	
-	if anim.startY ~= anim.endY then
-		if anim.startY < anim.endY then
-			anim.startY = anim.startY + anim.speed
-		elseif anim.startY > anim.endY then
-			anim.startY = anim.startY - anim.speed
-		end
-	end
-	
+
+	move('X')
+	move('Y')
+
 	if anim.startX == anim.endX and anim.startY == anim.endY then
-		doAnimation = false
+		return false
 	end
-	
-	return doAnimation
+
+	return true
 end
 
 function anim.createParticles(sX, sY, amount, duration)
