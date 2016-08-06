@@ -105,36 +105,32 @@ function anim.createParticles(sX, sY, amount, duration)
 end
 
 function anim.flyParticles()
-	gotParticles = true
-	
+	local gotParticles = true
+
 	for i = 1, #particles do
-		color({200, 200, 255, 255})
-		
+		color{200, 200, 255, 255}
+
 		draw(img_particle, particles[i].x, particles[i].y)
-		
+
 		for j = 1, 10 do
-			color({200, 200, 255, 255 - 20*(j-1)})
-			draw(img_particle, particles[i].x - particles[i].speedX*j, particles[i].y - particles[i].speedY*j)
+			color{200, 200, 255, 255 - 20 * (j - 1)}
+			draw(
+				img_particle, particles[i].x - particles[i].speedX * j,
+				particles[i].y - particles[i].speedY * j)
 		end
-		
+
 		particles[i].x = particles[i].x + particles[i].speedX
 		particles[i].y = particles[i].y + particles[i].speedY
-		
+
 		particles[i].dur = particles[i].dur - 1
-		
-		noMoreParticles = true
-	
-		if particles[i].dur > 0 then
-			noMoreParticles = false
-		end
-		
-		if noMoreParticles == true then
+
+		if particles[i].dur <= 0 then
 			gotParticles = false
 		end
 	end
-	
+
 	color(white)
-	
+
 	return gotParticles
 end
 
