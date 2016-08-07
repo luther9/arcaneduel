@@ -638,8 +638,8 @@ actionValues = {
 		function(act, cost)
 			local result = act[3]
 
-			for i = 1, 5 do
-				local thisCard = cards[enemySlots[i]]
+			for _, slot in ipairs(enemySlots) do
+				local thisCard = cards[slot]
 
 				if thisCard.action[1] ~= "magicschool"
 					and thisCard.action[1] ~= "companion"
