@@ -222,8 +222,8 @@ actionValues = {
 			result = result + (player.hp < enemy.hp and 1 or -2)
 
 			local hasHeal
-			for i = 1, 5 do
-				local thisCard = cards[enemySlots[i]]
+			for _, slot in ipairs(enemySlots) do
+				local thisCard = cards[slot]
 
 				if thisCard.action[1] == "heal" then
 					hasHeal = true
