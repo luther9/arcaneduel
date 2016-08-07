@@ -3,17 +3,17 @@ local function healthPercentage(p)
 end
 
 local function playerCanDie()
-	for i = 1, 5 do
-		if cards[enemySlots[i]].action[1] == "damage" or
-		cards[enemySlots[i]].action[1] == "damagedot" then
-			if cards[enemySlots[i]].action[2] - player.defense >= player.hp and
-				(enemy.energy >= cards[enemySlots[i]].energy
-				 or enemy.energy + game.energyPerTurn >= cards[enemySlots[i]].energy) then
+	for _, slot in ipairs(enemySlots) do
+		if cards[slot].action[1] == "damage" or cards[slot].action[1] == "damagedot"
+		then
+			if cards[slot].action[2] - player.defense >= player.hp and
+				(enemy.energy >= cards[slot].energy or
+				 enemy.energy + game.energyPerTurn >= cards[slot].energy) then
 					return true
 			end
-		elseif cards[enemySlots[i]].action[1] == "udamage" and
-			(enemy.energy >= cards[enemySlots[i]].energy
-			 or enemy.energy + game.energyPerTurn >= cards[enemySlots[i]].energy) then
+		elseif cards[slot].action[1] == "udamage" and
+			(enemy.energy >= cards[slot].energy or
+			 enemy.energy + game.energyPerTurn >= cards[slot].energy) then
 				return true
 		end
 	end
